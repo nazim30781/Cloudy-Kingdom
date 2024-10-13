@@ -1,5 +1,8 @@
-﻿using Unity.Cinemachine;
+﻿using System;
+using nCloudyKingdom.Scripts.Game.GamePlay.Character;
+using Unity.Cinemachine;
 using UnityEngine;
+using Zenject;
 
 namespace nCloudyKingdom.Scripts.Game.GamePlay.Camera
 {
@@ -7,6 +10,16 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Camera
     {
         [SerializeField] private CinemachineCamera _battleCamera;
         [SerializeField] private CinemachineCamera _baseCamera;
+
+        [Inject] private Player _player;
+
+        public void Initialize()
+        {
+            var target = _player.transform;
+            
+            _battleCamera.Target.TrackingTarget = target;
+            _baseCamera.Target.TrackingTarget = target;
+        }
 
         public void ChangeCamera()
         {
