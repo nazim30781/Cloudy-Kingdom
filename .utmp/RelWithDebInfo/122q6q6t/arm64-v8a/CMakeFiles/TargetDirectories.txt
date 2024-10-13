@@ -1,0 +1,5 @@
+C:/Users/topti/programming/UnityProjects/nCloudyKingdom/Cloudy-Kingdom/.utmp/RelWithDebInfo/122q6q6t/arm64-v8a/CMakeFiles/edit_cache.dir
+C:/Users/topti/programming/UnityProjects/nCloudyKingdom/Cloudy-Kingdom/.utmp/RelWithDebInfo/122q6q6t/arm64-v8a/CMakeFiles/rebuild_cache.dir
+C:/Users/topti/programming/UnityProjects/nCloudyKingdom/Cloudy-Kingdom/.utmp/RelWithDebInfo/122q6q6t/arm64-v8a/GameActivity/CMakeFiles/game.dir
+C:/Users/topti/programming/UnityProjects/nCloudyKingdom/Cloudy-Kingdom/.utmp/RelWithDebInfo/122q6q6t/arm64-v8a/GameActivity/CMakeFiles/edit_cache.dir
+C:/Users/topti/programming/UnityProjects/nCloudyKingdom/Cloudy-Kingdom/.utmp/RelWithDebInfo/122q6q6t/arm64-v8a/GameActivity/CMakeFiles/rebuild_cache.dir
