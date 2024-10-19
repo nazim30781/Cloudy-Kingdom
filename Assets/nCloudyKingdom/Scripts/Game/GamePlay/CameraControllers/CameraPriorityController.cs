@@ -11,11 +11,11 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Camera
         [SerializeField] private CinemachineCamera _battleCamera;
         [SerializeField] private CinemachineCamera _baseCamera;
 
-        [Inject] private Player _player;
+        [Inject] private PlayerConf _playerConf;
 
         public void Initialize()
         {
-            var target = _player.transform;
+            var target = _playerConf.transform;
             
             _battleCamera.Target.TrackingTarget = target;
             _baseCamera.Target.TrackingTarget = target;

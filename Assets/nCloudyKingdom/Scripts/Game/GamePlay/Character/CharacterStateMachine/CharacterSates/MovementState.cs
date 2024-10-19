@@ -4,7 +4,7 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Character.CharacterStateMachine.C
 {
     public class MovementState : BaseCharacterBehaviour
     {
-        public MovementState(Player player, Animator animator) : base(player, animator) {}
+        public MovementState(PlayerConf playerConf, Animator animator) : base(playerConf, animator) {}
         public override void OnEnter()
         {
             _animator.SetBool("Move", true);

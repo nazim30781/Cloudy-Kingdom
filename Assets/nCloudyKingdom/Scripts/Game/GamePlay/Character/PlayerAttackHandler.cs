@@ -1,12 +1,13 @@
 ﻿using nCloudyKingdom.Scripts.Game.GamePlay.Enemys;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace nCloudyKingdom.Scripts.Game.GamePlay.Character
 {
     public class PlayerAttackHandler : MonoBehaviour
     {
         [SerializeField] private PlayerMovementHandler _movementHandler;
-        [SerializeField] private Player _player;
+        [FormerlySerializedAs("_player")] [SerializeField] private PlayerConf playerConf;
         [SerializeField] private Transform _rayPoint;
         
         public bool FollowTarget;
@@ -23,7 +24,7 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Character
                     {
                         FollowTarget = false;
                         _movementHandler.StopMovement();
-                        _player.ChangeToAttackState();
+                        playerConf.ChangeToAttackState();
                     }
                 }
             }

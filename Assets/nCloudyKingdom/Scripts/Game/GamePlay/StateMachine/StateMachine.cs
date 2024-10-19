@@ -1,4 +1,6 @@
-﻿namespace nCloudyKingdom.Scripts.Game.GamePlay.StateMachine
+﻿using UnityEngine;
+
+namespace nCloudyKingdom.Scripts.Game.GamePlay.StateMachine
 {
     public class StateMachine
     {
@@ -12,6 +14,7 @@
 
         public void ChangeState(IState newState)
         {
+            Debug.Log(newState);
             CurrentState.OnExit();
             CurrentState = newState;
             CurrentState.OnEnter();

@@ -2,56 +2,45 @@
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 
 namespace nCloudyKingdom.Scripts.Game.GamePlay.Character
 {
     public class PlayerMovementHandler : MonoBehaviour
     {
-        [SerializeField] private Player _player;
-        [SerializeField] private PlayerAttackHandler _playerAttackHandler;
+        [SerializeField] private PlayerConf playerConf;
         
-        private UnityEngine.Camera mainCamera;
         private NavMeshAgent _agent;
-
-        public void Initialize()
+        
+        public void Initialize(NavMeshAgent agent)
         {
-            mainCamera = UnityEngine.Camera.main;
-            _agent = GetComponent<NavMeshAgent>();
+            _agent = agent;
         }
 
         private void Update()
         {
-            if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
-            {
-                RaycastHit hit;
-                if (Physics.Raycast(mainCamera.ScreenPointToRay(Input.mousePosition), out hit ))
-                {
-                    _player.ChangeToMoveState();
-                    if (hit.collider.TryGetComponent(out IAttackable enemy))
-                    {
-                        _agent.SetDestination(enemy.GetDestinationPoint());
-                        _playerAttackHandler.FollowTarget = true;
-                    }
-                    else
-                    {
-                        _agent.SetDestination(hit.point);
-                        _agent.isStopped = false;
-                    }
-                }
-            }
-            
             MovementHandler();
+        }
+
+        public void Move(Vector3 point)
+        {
+            _agent.SetDestination(point);
+            _agent.isStopped = false;
+            if (!playerConf.IsMovementState())
+            {
+                playerConf.ChangeToMoveState();
+            }
         }
 
         private void MovementHandler()
         {
-            if (_agent.velocity == Vector3.zero && !_player.IsAttackState())
-                _player.ChangeToIdleState();
+            if (_agent.velocity == Vector3.zero && !playerConf.IsAttackState() && !playerConf.IsIdleState() && !playerConf.IsFollowState())
+                playerConf.ChangeToIdleState();
 
-            if (_agent.velocity != Vector3.zero && !_player.IsAttackState())
-                _player.ChangeToMoveState();
+            if (_agent.velocity != Vector3.zero && !playerConf.IsAttackState() && !playerConf.IsMovementState() && !playerConf.IsFollowState()) 
+                playerConf.ChangeToMoveState();
 
-            if (_player.IsMovementState())
+            if (playerConf.IsMovementState())
             {
                 var angle = Mathf.Atan2(_agent.velocity.x, _agent.velocity.z) * Mathf.Rad2Deg;
                 transform.rotation = Quaternion.Euler(0, angle, 0);
@@ -62,6 +51,5 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Character
         {
             _agent.isStopped = true;
         }
-
     }
 }

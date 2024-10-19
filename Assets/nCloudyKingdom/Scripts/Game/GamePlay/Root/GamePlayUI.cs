@@ -12,7 +12,6 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Root
         {
             if (_cameraPriorityController)
             {
-                print("has");
             }
         }
 
