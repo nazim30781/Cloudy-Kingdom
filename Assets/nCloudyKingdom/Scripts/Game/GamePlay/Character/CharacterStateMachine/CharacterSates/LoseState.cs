@@ -16,7 +16,7 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Character.CharacterStateMachine.C
         }
         private IEnumerator Dead()
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
             playerConf.Dead();
         }
     }

@@ -41,6 +41,7 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Enemys.EnemyStateMachine
             }
             else
                 _currentAttackTime -= Time.deltaTime;
+            
             if (!HasTarget())
                 _enemy.BaseBehaviour();
         }

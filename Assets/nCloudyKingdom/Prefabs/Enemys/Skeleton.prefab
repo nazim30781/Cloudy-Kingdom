@@ -507,8 +507,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63860a0a9a3d4442bac31a34c3d0b8f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 50
+  _maxHealth: 10
   _enemyConfig: {fileID: 2877241060874255723}
+  _loseEffect: {fileID: 5985634496115995773, guid: 463cf9f7af4680240898f6aeba3fe3e6, type: 3}
 --- !u!114 &3857115847690784114
 MonoBehaviour:
   m_ObjectHideFlags: 0

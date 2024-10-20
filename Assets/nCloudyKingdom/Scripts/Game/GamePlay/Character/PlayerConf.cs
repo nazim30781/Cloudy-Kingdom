@@ -20,6 +20,7 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Character
         private MovementState _movementState;
         private FollowState _followState;
         private LoseState _loseState;
+        private TeleportState _teleportState;
         
         public Transform RayPoint;
 
@@ -33,6 +34,7 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Character
             _attackState = new AttackState(this, _animator);
             _movementState = new MovementState(this, _animator);
             _loseState = new LoseState(this, _animator);
+            _teleportState = new TeleportState(this, _animator, _agent);
 
             _stateMachine.Initialize(_idleState);
             _playerMovementHandler.Initialize(_agent);
@@ -46,28 +48,28 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Character
         private void Update()
         {
             _stateMachine.CurrentState.Update();
-            if (Input.GetKeyDown(KeyCode.A))
-                _playerBody.TakeDamage(10);
         }
 
         public void OnLose()
         {
             _agent.isStopped = true;
             _playerInputReader.enabled = false;
-            _playerBody.enabled = false;
             _playerMovementHandler.enabled = false;
             _playerFollowHandler.enabled = false;
+            Destroy(_playerBody);
         }
 
         public void ChangeToAttackState() => _stateMachine.ChangeState(_attackState);
         public void ChangeToIdleState() => _stateMachine.ChangeState(_idleState);
         public void ChangeToMoveState() => _stateMachine.ChangeState(_movementState);
         public void ChangeToFollowState() => _stateMachine.ChangeState(_followState);
+        public void ChangeToTeleportState() => _stateMachine.ChangeState(_teleportState);
         public void Lose() => _stateMachine.ChangeState(_loseState);
         public bool IsAttackState() => _stateMachine.CurrentState == _attackState;
         public bool IsMovementState() => _stateMachine.CurrentState == _movementState;
         public bool IsFollowState() => _stateMachine.CurrentState == _followState;
         public bool IsIdleState() => _stateMachine.CurrentState == _idleState;
+        public bool IsTeleportState() => _stateMachine.CurrentState == _teleportState;
 
         public void Dead()
         {

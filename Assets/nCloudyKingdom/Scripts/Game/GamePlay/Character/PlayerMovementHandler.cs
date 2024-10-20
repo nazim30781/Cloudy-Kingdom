@@ -34,7 +34,7 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Character
 
         private void MovementHandler()
         {
-            if (_agent.velocity == Vector3.zero && !playerConf.IsAttackState() && !playerConf.IsIdleState() && !playerConf.IsFollowState())
+            if (_agent.velocity == Vector3.zero && !playerConf.IsAttackState() && !playerConf.IsIdleState() && !playerConf.IsFollowState() && !playerConf.IsTeleportState())
                 playerConf.ChangeToIdleState();
 
             if (_agent.velocity != Vector3.zero && !playerConf.IsAttackState() && !playerConf.IsMovementState() && !playerConf.IsFollowState()) 

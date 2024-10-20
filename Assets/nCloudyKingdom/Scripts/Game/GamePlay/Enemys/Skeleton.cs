@@ -12,7 +12,7 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Enemys
         [SerializeField] private EnemyPatrollerHandler enemyPatrollerHandler;
         [SerializeField] private EnemyAttackHandler _attackHandler;
         [SerializeField] private EnemyHitBox _hitBox;
-        
+
         private NavMeshAgent _agent;
         
         private AttackState _attackState;
@@ -49,6 +49,11 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Enemys
             {
                 _stateMachine.ChangeState(_attackState);
             }
+        }
+
+        public override void Lose()
+        {
+            Destroy(gameObject);
         }
     }
 }
