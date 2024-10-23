@@ -4,30 +4,34 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Character
 {
     public class PlayerBody : MonoBehaviour
     {
-        [SerializeField] private int _health;
         [SerializeField] private GameObject _loseEffect;
         [SerializeField] private GameObject _spawnEffect;
         [SerializeField] private Transform _effectsSpawnPoint;
         [SerializeField] private LayerMask _GroundMask;
-
-        private PlayerConf _playerConf;
-        private int _currentHealth;
+        [SerializeField] private Health _health;
         
-        public void Initialize(PlayerConf playerConf)
+        private PlayerConfig _playerConfig;
+        
+        public void Initialize(PlayerConfig playerConf, Health health)
         {
-            _currentHealth = _health;
-            _playerConf = playerConf;
-            Instantiate(_spawnEffect, _effectsSpawnPoint.position, Quaternion.identity);
+            _playerConfig = playerConf;
+            SpawnEffect();
+            
+            _health.Died += OnDied;
         }
         
         public void TakeDamage(int damage)
         {
-            _currentHealth -= damage;
-            if (_currentHealth <= 0)
+            if (_playerConfig.CanTakeDamage)
             {
-                _playerConf.Lose();
-                Instantiate(_loseEffect, _effectsSpawnPoint.position, Quaternion.identity);
+                _health.TakeDamage(damage);
             }
+        }
+
+        private void OnDied()
+        {
+            _playerConfig.ChangeToLoseState();
+            Instantiate(_loseEffect, _effectsSpawnPoint.position, Quaternion.identity);
         }
 
         public void SpawnEffect()
@@ -35,15 +39,11 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Character
             Ray ray = new Ray(_effectsSpawnPoint.position, Vector3.down);
             if (Physics.Raycast(ray.origin, Vector3.down, out RaycastHit hit, _GroundMask))
             {
-                Instantiate(_spawnEffect, hit.point, Quaternion.identity);
+                var effect = Instantiate(_spawnEffect, hit.point, Quaternion.identity);
+                effect.transform.parent = gameObject.transform;
             }
         }
 
-        public void Teleport()
-        {
-            _playerConf.ChangeToTeleportState();
-        }
-
-        public void GoIdle() => _playerConf.ChangeToIdleState();
+        public void GoIdle() => _playerConfig.ChangeToIdleState();
     }
 }

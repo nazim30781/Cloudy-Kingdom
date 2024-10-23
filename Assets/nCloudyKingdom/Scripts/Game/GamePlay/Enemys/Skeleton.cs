@@ -51,9 +51,8 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Enemys
             }
         }
 
-        public override void Lose()
-        {
-            Destroy(gameObject);
-        }
+        public override void OnLose() => Destroy(_agent);
+
+        public override void Lose() => Destroy(gameObject);
     }
 }

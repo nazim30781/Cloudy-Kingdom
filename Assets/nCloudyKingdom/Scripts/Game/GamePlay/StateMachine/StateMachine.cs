@@ -14,7 +14,6 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.StateMachine
 
         public void ChangeState(IState newState)
         {
-            Debug.Log(newState);
             CurrentState.OnExit();
             CurrentState = newState;
             CurrentState.OnEnter();

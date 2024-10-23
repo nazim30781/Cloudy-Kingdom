@@ -1,23 +1,17 @@
-﻿using nCloudyKingdom.Scripts.Game.GamePlay.Camera;
+﻿using System;
+using nCloudyKingdom.Scripts.Game.GamePlay.Character;
 using UnityEngine;
+using UnityEngine.UI;
 using Zenject;
 
 namespace nCloudyKingdom.Scripts.Game.GamePlay.Root
 {
     public class GamePlayUI : MonoBehaviour
     {
-        [Inject] private CameraPriorityController _cameraPriorityController;
+        public Joystick Joystick;
+        public Button AttackBtn;
+        public Button JumpBtn;
 
-        private void Update()
-        {
-            if (_cameraPriorityController)
-            {
-            }
-        }
-
-        public void ChangeCamera()
-        {
-            _cameraPriorityController.ChangeCamera();
-        }
+        public void Restart() => GameEntryPoint.Instatnce.RunGame();
     }
 }

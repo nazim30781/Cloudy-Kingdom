@@ -14,12 +14,10 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Enemys
 
         public abstract void Initialize();
 
-        protected virtual void Update()
-        {
-            _stateMachine.CurrentState.Update();
-        }
+        protected virtual void Update() => _stateMachine.CurrentState.Update();
         public virtual void AfterAttackAction() {}
         public virtual void BaseBehaviour() {}
         public virtual void Lose() {}
+        public virtual void OnLose() {}
     }
 }

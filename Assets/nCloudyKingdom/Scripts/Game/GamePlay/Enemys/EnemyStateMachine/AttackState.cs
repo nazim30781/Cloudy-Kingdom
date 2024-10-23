@@ -35,8 +35,8 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Enemys.EnemyStateMachine
             
             if (_currentAttackTime <= 0 && HasTarget())
             {
-                _animator.SetTrigger("Attack");
                 _handler.Attack(_playerBody);
+                _animator.SetTrigger("Attack");
                 _currentAttackTime = _attackTime;
             }
             else
@@ -50,8 +50,8 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Enemys.EnemyStateMachine
         {
             RaycastHit hit;
             Ray ray = new Ray(_enemy.RayPoint.position, _enemy.transform.forward);
-            Debug.DrawRay(ray.origin, _enemy.transform.forward * 10);
-            if (Physics.Raycast(ray, out hit, 5))
+            Debug.DrawRay(ray.origin, _enemy.transform.forward * 3);
+            if (Physics.Raycast(ray, out hit, 3))
             {
                 if (hit.collider.TryGetComponent(out PlayerBody body))
                 {

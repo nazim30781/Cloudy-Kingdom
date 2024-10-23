@@ -8,7 +8,7 @@ namespace nCloudyKingdom.Scripts
 {
     public class GameEntryPoint
     {
-        private static GameEntryPoint _instatnce;
+        public static GameEntryPoint Instatnce;
         private Coroutines _coroutines;
         private UIRootView _uiRoot;
         
@@ -18,8 +18,8 @@ namespace nCloudyKingdom.Scripts
             Application.targetFrameRate = 60;
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
             
-            _instatnce = new GameEntryPoint();
-            _instatnce.RunGame();
+            Instatnce = new GameEntryPoint();
+            Instatnce.RunGame();
         }
 
         private GameEntryPoint()
@@ -32,7 +32,7 @@ namespace nCloudyKingdom.Scripts
             Object.DontDestroyOnLoad(_uiRoot.gameObject);
         }
 
-        private void RunGame()
+        public void RunGame()
         {
 #if UNITY_EDITOR
             var sceneName = SceneManager.GetActiveScene().name;

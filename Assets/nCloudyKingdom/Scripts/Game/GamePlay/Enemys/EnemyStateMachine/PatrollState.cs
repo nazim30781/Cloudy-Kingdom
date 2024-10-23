@@ -46,7 +46,7 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Enemys.EnemyStateMachine
 
             foreach (var collider in colliders)
             {
-                if (collider.GetComponent<PlayerConf>())
+                if (collider.GetComponent<PlayerBody>())
                 {
                     _enemyPatrollerHandler.StartFollow();
                     return true;

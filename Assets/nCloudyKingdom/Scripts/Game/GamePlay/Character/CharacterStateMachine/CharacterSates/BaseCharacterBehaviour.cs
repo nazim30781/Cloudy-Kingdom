@@ -5,10 +5,10 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Character.CharacterStateMachine.C
 {
     public abstract class BaseCharacterBehaviour : IState
     {
-        protected readonly PlayerConf playerConf;
+        protected readonly PlayerConfig playerConf;
         protected readonly Animator _animator;
 
-        protected BaseCharacterBehaviour(PlayerConf playerConf, Animator animator)
+        protected BaseCharacterBehaviour(PlayerConfig playerConf, Animator animator)
         {
             this.playerConf = playerConf;
             _animator = animator;

@@ -1,18 +1,17 @@
 ﻿using nCloudyKingdom.Scripts.Game.GamePlay.Character;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
 
 namespace nCloudyKingdom.Scripts.Game.GamePlay.Root.Installers
 {
     public class GameplayPlayerInstaller : MonoInstaller
     {
-        [FormerlySerializedAs("_player")] [SerializeField] private PlayerConf playerConf;
+        [SerializeField] private PlayerConfig playerConf;
         public override void InstallBindings()
         {
-            var playerInstance = Container.InstantiatePrefabForComponent<PlayerConf>(playerConf);
+            var playerInstance = Container.InstantiatePrefabForComponent<PlayerConfig>(playerConf);
             playerInstance.Initialize();
-            Container.Bind<PlayerConf>().FromInstance(playerInstance).AsSingle();
+            Container.Bind<PlayerConfig>().FromInstance(playerInstance).AsSingle();
         }
     }
 }

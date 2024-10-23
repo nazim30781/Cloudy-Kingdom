@@ -11,6 +11,7 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Enemys.EnemyStateMachine
         public override void OnEnter()
         {
             _animator.SetTrigger("Loose");
+            _enemy.OnLose();
             _enemy.StartCoroutine(Dead());
         }
 

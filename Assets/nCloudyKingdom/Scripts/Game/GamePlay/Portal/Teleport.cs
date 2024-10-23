@@ -30,7 +30,6 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Portal
         private IEnumerator Transition()
         {
             yield return new WaitForSeconds(1.5f);
-            _object.Teleport();
             _object.transform.position = _target.SpawnPoint.position;
             _target.Recieve(_object);
         }

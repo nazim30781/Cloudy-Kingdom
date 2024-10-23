@@ -34,7 +34,7 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Enemys.EnemyStateMachine
 
             _agent.SetDestination(_target.position);
 
-            if (dir.magnitude <= 2.9f)
+            if (dir.magnitude <= 3.3f)
                 _enemyPatrollerHandler.StartAttack();
 
             if (_currentTime <= 0)
@@ -57,7 +57,7 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Enemys.EnemyStateMachine
 
             foreach (var collider in colliders)
             {
-                if (collider.GetComponent<PlayerConf>())
+                if (collider.GetComponent<PlayerBody>())
                 {
                     _target = collider.transform;
                     return true;
