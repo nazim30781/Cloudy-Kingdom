@@ -12,6 +12,8 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Enemys
         [SerializeField] private EnemyPatrollerHandler enemyPatrollerHandler;
         [SerializeField] private EnemyAttackHandler _attackHandler;
         [SerializeField] private EnemyHitBox _hitBox;
+        [SerializeField] private HealthBar _healthBar;
+        [SerializeField] private Health _health;
 
         private NavMeshAgent _agent;
         
@@ -25,6 +27,9 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Enemys
             base.Init(targets);
             
             _agent = GetComponent<NavMeshAgent>();
+            
+            _health.Initialize();
+            _healthBar.Initialize(_health);
 
             _patrollState = new PatrollState(this, _animator, enemyPatrollerHandler);
             _patrollMoveState = new PatrollMoveState(this, _animator, enemyPatrollerHandler);
@@ -32,7 +37,7 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Enemys
             _attackState = new AttackState(this, _animator, _attackHandler);
                 
             enemyPatrollerHandler.Initialize(_targets, _agent, this);
-            _hitBox.Initialize(this);
+            _hitBox.Initialize(this, _health);
             _attackHandler.Initialize();
         }
 

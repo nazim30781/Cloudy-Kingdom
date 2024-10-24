@@ -8,12 +8,13 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Character
         [SerializeField] private GameObject _spawnEffect;
         [SerializeField] private Transform _effectsSpawnPoint;
         [SerializeField] private LayerMask _GroundMask;
-        [SerializeField] private Health _health;
+        private Health _health;
         
         private PlayerConfig _playerConfig;
         
         public void Initialize(PlayerConfig playerConf, Health health)
         {
+            _health = health;
             _playerConfig = playerConf;
             SpawnEffect();
             

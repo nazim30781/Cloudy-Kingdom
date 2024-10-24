@@ -4,29 +4,34 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Enemys
 {
     public class EnemyHitBox : MonoBehaviour, IAttackable
     {
-        [SerializeField] private int _maxHealth;
         [SerializeField] private EnemyConfig _enemyConfig;
         [SerializeField] private GameObject _loseEffect;
-        private int _currentHealth;
 
-        public void Initialize(EnemyConfig enemyConfig)
+        private Health _health;
+        public void Initialize(EnemyConfig enemyConfig, Health health)
         {
             _enemyConfig = enemyConfig;
-            _currentHealth = _maxHealth;
+            _health = health;
+            _health.Died += OnDied;
         }
         public void TakeDamage()
         {
-            _currentHealth -= 10;
-
-            if (_currentHealth <= 0)
-            {
-                _enemyConfig.ChangeLoseState();
-                var pos = transform.position;
-                pos.y += 5;
-                Instantiate(_loseEffect, pos, Quaternion.identity);
-            }
-            else
-                _enemyConfig.OnTakeDamage();
+            _health.TakeDamage(10);
+            _enemyConfig.OnTakeDamage();
         }
+
+        private void OnDied()
+        {
+            _enemyConfig.ChangeLoseState();
+            SpawnEffect();
+        }
+
+        private void SpawnEffect()
+        {
+            var pos = transform.position;
+            pos.y += 5;
+            Instantiate(_loseEffect, pos, Quaternion.identity);
+        }
+
     }
 }

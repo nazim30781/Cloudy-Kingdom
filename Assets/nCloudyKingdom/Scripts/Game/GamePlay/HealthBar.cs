@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 namespace nCloudyKingdom.Scripts.Game.GamePlay
@@ -16,11 +15,6 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay
             _health = health;
             _health.HealthChanged += OnHealthChanged;
             _healthBarFilling.color = _gradient.Evaluate(1);
-        }
-
-        private void OnDestroy()
-        {
-            _health.HealthChanged -= OnHealthChanged;
         }
 
         private void OnHealthChanged(float value)

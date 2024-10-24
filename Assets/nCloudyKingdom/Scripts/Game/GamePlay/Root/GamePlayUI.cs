@@ -1,8 +1,5 @@
-﻿using System;
-using nCloudyKingdom.Scripts.Game.GamePlay.Character;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-using Zenject;
 
 namespace nCloudyKingdom.Scripts.Game.GamePlay.Root
 {

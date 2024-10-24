@@ -1,7 +1,6 @@
 ﻿using nCloudyKingdom.Scripts.Game.GamePlay.Character.CharacterStateMachine.CharacterSates;
 using nCloudyKingdom.Scripts.Game.GamePlay.Root;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Zenject;
 
 namespace nCloudyKingdom.Scripts.Game.GamePlay.Character

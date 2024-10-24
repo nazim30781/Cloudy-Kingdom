@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace nCloudyKingdom.Scripts.Game.GamePlay
 {
