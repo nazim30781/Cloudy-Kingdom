@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using nCloudyKingdom.Scripts.Game.GamePlay.Enemys;
 using UnityEngine;
 
@@ -6,12 +7,23 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Character.CharacterStateMachine.C
 {
     public class AttackState : BaseCharacterBehaviour
     {
-        public AttackState(PlayerConfig playerConf, Animator animator) : base(playerConf, animator) {}
+        private PlayerController _controller;
+
+        public AttackState(PlayerConfig playerConf, Animator animator, PlayerController controller) : base(playerConf,
+            animator)
+        {
+            _controller = controller;
+        }
 
         public override void OnEnter()
         {
+            _controller.CanMove = false;
+            playerConf.StartCoroutine(CanMove());
+            
             playerConf.CanChangeState = false;
+            
             _animator.SetTrigger("Attack");
+            
             ApplyDamage(CheckTargets());
         }
 
@@ -19,11 +31,11 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Character.CharacterStateMachine.C
         {
             foreach (var enemy in enemys)
             {
-                Debug.Log("a");
                 enemy.TakeDamage();
             }
+            
             playerConf.CanChangeState = true;
-        } 
+        }
 
         private List<EnemyHitBox> CheckTargets()
         {
@@ -39,6 +51,12 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Character.CharacterStateMachine.C
                 }
             }
             return _enemys;
+        }
+
+        private IEnumerator CanMove()
+        {
+            yield return new WaitForSeconds(0.35f);
+            _controller.CanMove = true;
         }
     }
 }

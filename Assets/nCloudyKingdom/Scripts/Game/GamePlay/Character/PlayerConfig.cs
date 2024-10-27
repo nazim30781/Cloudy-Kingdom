@@ -43,11 +43,11 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Character
             _health.Initialize();
             _healthBar.Initialize(_health);
             _playerController.Initialize(this, _gamePlayUI);
-            _playerBody.Initialize(this, _health);
+            _playerBody.Initialize(this, _health, _controller);
             _controllerMediator.Initilize(_gamePlayUI, _playerController);
 
             _idleState = new IdleState(this, _animator);
-            _attackState = new AttackState(this, _animator);
+            _attackState = new AttackState(this, _animator, _playerController);
             _movementState = new MovementState(this, _animator);
             _loseState = new LoseState(this, _animator);
             _jumpState = new JumpState(this, _animator, _playerController);
@@ -64,10 +64,7 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Character
         public bool IsMovementState() => _stateMachine.CurrentState == _movementState;
         public bool IsIdleState() => _stateMachine.CurrentState == _idleState;
         
-        private void Update()
-        {
-            _stateMachine.CurrentState.Update();
-        }
+        private void Update() => _stateMachine.CurrentState.Update();
 
         public void OnLose()
         {

@@ -15,7 +15,6 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Enemys
         
         public virtual void Attack(PlayerBody body)
         {
-            print("at");
             body.TakeDamage(10);
         }
     }

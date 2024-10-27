@@ -7,8 +7,8 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Enemys
 {
     public class EnemyConfig : Enemy
     {
-        private IdleState _idleState;
-        private LoseState _loseState;
+        protected IdleState _idleState;
+        protected LoseState _loseState;
 
         public override void Initialize()
         {
@@ -23,9 +23,6 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Enemys
         public void ChangeLoseState() => _stateMachine.ChangeState(_loseState);
         public override void BaseBehaviour() => _stateMachine.ChangeState(_idleState);
         public virtual void OnTakeDamage() {}
-        public override void Lose()
-        {
-            Destroy(gameObject);
-        }
+        public override void Lose() => Destroy(gameObject);
     }
 }

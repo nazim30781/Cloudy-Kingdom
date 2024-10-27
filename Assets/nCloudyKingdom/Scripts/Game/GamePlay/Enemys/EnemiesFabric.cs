@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace nCloudyKingdom.Scripts.Game.GamePlay.Enemys
 {
-    public class EnemysFabric : MonoBehaviour
+    public class EnemiesFabric : MonoBehaviour
     {
         [SerializeField] private Enemy _enemyPrefab;
         [SerializeField] private Transform _spawnPoint;

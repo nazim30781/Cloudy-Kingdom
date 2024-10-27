@@ -7,13 +7,12 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Enemys
 {
     public class EnemyPatrollerHandler : MonoBehaviour
     {
+        private IPatroller _patroller;
         private List<Transform> _targets;
+        private NavMeshAgent _agent;
         private Transform _currentTarget;
         private int _currentTargetNumber;
         private int _maxTargetNumber;
-
-        private NavMeshAgent _agent;
-        private IPatroller _patroller;
 
         public void Initialize(List<Transform> targets, NavMeshAgent agent, IPatroller patroller)
         {
@@ -43,20 +42,11 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Enemys
             return hit.point;
         }
 
-        public void StartFollow()
-        {
-            _patroller.StartFollow();
-        }
+        public void StartFollow() => _patroller.StartFollow();
 
-        public void StartAttack()
-        {
-            _patroller.ChangeToAttackState();
-        }
+        public void StartAttack() => _patroller.ChangeToAttackState();
 
-        public bool HasPath()
-        {
-            return _agent.hasPath;
-        }
+        public bool HasPath() => _agent.hasPath;
 
         public void StartMove()
         {
@@ -64,9 +54,6 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Enemys
             _patroller.MoveNextTarget();
         }
 
-        public void StartPatrol()
-        {
-            _patroller.ChangeToPatrolState();
-        }
+        public void StartPatrol() => _patroller.ChangeToPatrolState();
     }
 }

@@ -7,15 +7,17 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Character
         [SerializeField] private GameObject _loseEffect;
         [SerializeField] private GameObject _spawnEffect;
         [SerializeField] private Transform _effectsSpawnPoint;
-        [SerializeField] private LayerMask _GroundMask;
-        private Health _health;
         
+        private Health _health;
+        private CharacterController _controller;
         private PlayerConfig _playerConfig;
         
-        public void Initialize(PlayerConfig playerConf, Health health)
+        public void Initialize(PlayerConfig playerConf, Health health, CharacterController controller)
         {
+            _controller = controller;
             _health = health;
             _playerConfig = playerConf;
+            
             SpawnEffect();
             
             _health.Died += OnDied;
@@ -24,27 +26,29 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Character
         public void TakeDamage(int damage)
         {
             if (_playerConfig.CanTakeDamage)
-            {
                 _health.TakeDamage(damage);
-            }
         }
 
         private void OnDied()
         {
             _playerConfig.ChangeToLoseState();
-            Instantiate(_loseEffect, _effectsSpawnPoint.position, Quaternion.identity);
+            SpawnEffect(_loseEffect);
         }
 
-        public void SpawnEffect()
+        public void SpawnEffect(GameObject effectType=null)
         {
-            Ray ray = new Ray(_effectsSpawnPoint.position, Vector3.down);
-            if (Physics.Raycast(ray.origin, Vector3.down, out RaycastHit hit, _GroundMask))
-            {
-                var effect = Instantiate(_spawnEffect, hit.point, Quaternion.identity);
-                effect.transform.parent = gameObject.transform;
-            }
+            if (effectType==null)
+                Instantiate(_spawnEffect, _effectsSpawnPoint);
+            else
+                Instantiate(effectType, _effectsSpawnPoint);
         }
 
-        public void GoIdle() => _playerConfig.ChangeToIdleState();
+        public void Teleport() => _controller.enabled = false;
+
+        public void GoIdle()
+        {
+            _controller.enabled = true;
+            _playerConfig.ChangeToIdleState();
+        }
     }
 }

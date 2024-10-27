@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace nCloudyKingdom.Scripts.Game.GamePlay.Character.CharacterStateMachine.CharacterSates
 {
     public class MovementState : BaseCharacterBehaviour
     {
+
         public MovementState(PlayerConfig playerConf, Animator animator) : base(playerConf, animator) {}
         public override void OnEnter()
         {

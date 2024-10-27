@@ -19,15 +19,17 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Character
         private Vector3 _velocity;
         private CharacterController _controller;
         private PlayerConfig _playerConfig;
+        
+        public bool CanMove;
 
         public void Initialize(PlayerConfig playerConfig, GamePlayUI gamePlayUI)
         {
             _controller = GetComponent<CharacterController>();
             
+            CanMove = true;
             _joystick = gamePlayUI.Joystick;
             _playerConfig = playerConfig;
             _gravity = 9.81f;
-
             _currentAttackTime = _attackTime;
         }
 
@@ -36,9 +38,9 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Character
             var horizontalInput = -_joystick.Vertical;
             var verticalInput = _joystick.Horizontal;
 
-            if (horizontalInput != 0 || verticalInput != 0 && _playerConfig.CanChangeState)
+            if (horizontalInput != 0 || verticalInput != 0 && CanMove)
             {
-                if (!_playerConfig.IsMovementState())
+                if (!_playerConfig.IsMovementState() && _playerConfig.CanChangeState)
                     _playerConfig.ChangeToMovementState();
                 
                 _moveDirection = transform.forward;
@@ -54,16 +56,14 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Character
             }
 
             if (_currentAttackTime > 0)
-            {
                 _currentAttackTime -= Time.deltaTime;
-            }
         }
 
         private void FixedUpdate()
         {
             DoGravity(_controller.isGrounded);
 
-            if (_playerConfig.IsMovementState())
+            if (_playerConfig.IsMovementState() && CanMove)
                 Move(_moveDirection);
         }
 

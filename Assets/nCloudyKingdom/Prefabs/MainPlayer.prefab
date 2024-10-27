@@ -1172,7 +1172,7 @@ Transform:
   m_GameObject: {fileID: 4529661267508461098}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.066999994, y: 0.068, z: 0}
+  m_LocalPosition: {x: 0, y: 0.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1766,7 +1766,6 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 5
     m_NumAlphaKeys: 2
-  _canvas: {fileID: 267084258039102734}
 --- !u!1 &5830307470211540150
 GameObject:
   m_ObjectHideFlags: 0
@@ -2369,7 +2368,6 @@ MonoBehaviour:
   _GroundMask:
     serializedVersion: 2
     m_Bits: 128
-  _health: {fileID: 2736082510737276507}
 --- !u!114 &5776639911026342951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2416,6 +2414,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 5
   _jumpForce: 10
+  CanMove: 0
 --- !u!114 &2736082510737276507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2496,9 +2495,9 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 1.48
+  m_Height: 1.56
   m_Radius: 0.5
-  m_SlopeLimit: 20
+  m_SlopeLimit: 15
   m_StepOffset: 1
   m_SkinWidth: 0.0001
   m_MinMoveDistance: 0.001
