@@ -8,15 +8,13 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Root
 {
     public class GameplayEntryPoint : MonoBehaviour
     {
-        [Inject] private PlayerConfig _playerConfig;
+        [Inject] private Player _player;
         
-        [FormerlySerializedAs("_enemysFabric")] [SerializeField] private EnemiesFabric enemiesFabric;
         [SerializeField] private CameraController _cameraController;
         public void Run(UIRootView rootView)
         {
-            enemiesFabric.Initialize();
             _cameraController.Initialize();
-            _playerConfig.gameObject.GetComponent<PlayerBody>().SpawnEffect();
+            _player.gameObject.GetComponent<PlayerBody>().SpawnEffect();
         }
     }
 }    

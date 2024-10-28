@@ -9,7 +9,7 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Character.CharacterStateMachine.C
     {
         private PlayerController _controller;
 
-        public AttackState(PlayerConfig playerConf, Animator animator, PlayerController controller) : base(playerConf,
+        public AttackState(Player playerConf, Animator animator, PlayerController controller) : base(playerConf,
             animator)
         {
             _controller = controller;
@@ -31,7 +31,7 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Character.CharacterStateMachine.C
         {
             foreach (var enemy in enemys)
             {
-                enemy.TakeDamage();
+                enemy.TakeDamage(10);
             }
             
             playerConf.CanChangeState = true;

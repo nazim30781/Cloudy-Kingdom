@@ -6,7 +6,7 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Character.CharacterStateMachine.C
 {
     public class LoseState : BaseCharacterBehaviour
     {
-        public LoseState(PlayerConfig playerConf, Animator animator) : base(playerConf, animator) {}
+        public LoseState(Player playerConf, Animator animator) : base(playerConf, animator) {}
 
         public override void OnEnter()
         {

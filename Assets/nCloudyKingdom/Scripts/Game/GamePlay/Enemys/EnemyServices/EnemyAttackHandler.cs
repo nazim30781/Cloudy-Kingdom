@@ -5,17 +5,16 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Enemys
 {
     public class EnemyAttackHandler : MonoBehaviour, IAttacker
     {
-        [SerializeField] protected float _attackTime;
-        public float AttackTime { get; private set; }
+        public int DamageCount { get; private set; }
 
-        public virtual void Initialize()
+        public virtual void Initialize(EnemyConfig config)
         {
-            AttackTime = _attackTime;
+            DamageCount = config.DamageCount;
         }
         
         public virtual void Attack(PlayerBody body)
         {
-            body.TakeDamage(10);
+            body.TakeDamage(DamageCount);
         }
     }
 }

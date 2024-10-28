@@ -53,6 +53,7 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Enemys.EnemyStateMachine
 
         private bool CheckTarget()
         {
+            _target = null;
             Collider[] colliders = Physics.OverlapSphere(_enemy.transform.position, 6);
 
             foreach (var collider in colliders)
@@ -63,6 +64,7 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Enemys.EnemyStateMachine
                     return true;
                 }
             }
+            
             _enemy.AfterAttackAction();
             return false;
         }

@@ -18,17 +18,17 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Character
         private Vector3 _moveDirection;
         private Vector3 _velocity;
         private CharacterController _controller;
-        private PlayerConfig _playerConfig;
+        private Player _player;
         
         public bool CanMove;
 
-        public void Initialize(PlayerConfig playerConfig, GamePlayUI gamePlayUI)
+        public void Initialize(Player player, GamePlayUI gamePlayUI)
         {
             _controller = GetComponent<CharacterController>();
             
             CanMove = true;
             _joystick = gamePlayUI.Joystick;
-            _playerConfig = playerConfig;
+            _player = player;
             _gravity = 9.81f;
             _currentAttackTime = _attackTime;
         }
@@ -40,8 +40,8 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Character
 
             if (horizontalInput != 0 || verticalInput != 0 && CanMove)
             {
-                if (!_playerConfig.IsMovementState() && _playerConfig.CanChangeState)
-                    _playerConfig.ChangeToMovementState();
+                if (!_player.IsMovementState() && _player.CanChangeState)
+                    _player.ChangeToMovementState();
                 
                 _moveDirection = transform.forward;
                 
@@ -50,8 +50,8 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Character
             }
             else
             {
-                if (!_playerConfig.IsIdleState() && _playerConfig.CanChangeState)
-                    _playerConfig.ChangeToIdleState();
+                if (!_player.IsIdleState() && _player.CanChangeState)
+                    _player.ChangeToIdleState();
                 _moveDirection = Vector3.zero;
             }
 
@@ -63,7 +63,7 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Character
         {
             DoGravity(_controller.isGrounded);
 
-            if (_playerConfig.IsMovementState() && CanMove)
+            if (_player.IsMovementState() && CanMove)
                 Move(_moveDirection);
         }
 
@@ -83,17 +83,17 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Character
 
         public void Jump()
         {
-            if (_controller.isGrounded && _playerConfig.CanChangeState) {
+            if (_controller.isGrounded && _player.CanChangeState) {
                 _velocity.y = _jumpForce;
-                _playerConfig.ChangeToJumpState();
+                _player.ChangeToJumpState();
             }
         }
 
         public void Attack()
         {
-            if (_playerConfig.CanChangeState && _currentAttackTime <= 0)
+            if (_player.CanChangeState && _currentAttackTime <= 0)
             {
-                _playerConfig.ChangeToAttackState();
+                _player.ChangeToAttackState();
                 _currentAttackTime = _attackTime;
             }
         }

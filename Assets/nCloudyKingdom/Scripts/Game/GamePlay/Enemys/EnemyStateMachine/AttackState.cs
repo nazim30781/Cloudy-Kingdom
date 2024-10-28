@@ -21,12 +21,12 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Enemys.EnemyStateMachine
             _currentAttackTime = 0.3f;
             if (HasTarget())
                 _target = _playerBody.transform;
-            _attackTime = _handler.AttackTime;
+            _attackTime = _enemy.Config.AttackTime;
         }
 
         public override void Update()
         {
-            if (_playerBody)
+            if (_target)
             {
                 var dir = _target.transform.position - _enemy.transform.position;
                 float angle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
@@ -50,8 +50,7 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Enemys.EnemyStateMachine
         {
             RaycastHit hit;
             Ray ray = new Ray(_enemy.RayPoint.position, _enemy.transform.forward);
-            Debug.DrawRay(ray.origin, _enemy.transform.forward * 3);
-            if (Physics.Raycast(ray, out hit, 3))
+            if (Physics.Raycast(ray, out hit, _enemy.Config.AttackDistance))
             {
                 if (hit.collider.TryGetComponent(out PlayerBody body))
                 {

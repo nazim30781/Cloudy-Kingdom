@@ -40,6 +40,7 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Portal
         {
             StartCoroutine(SetIdle(body));
             _portal.CanTeleport = false;
+            Teleported?.Invoke();
         }
         private IEnumerator SetIdle(PlayerBody body)
         {

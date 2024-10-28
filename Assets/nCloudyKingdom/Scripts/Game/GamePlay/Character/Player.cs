@@ -5,7 +5,7 @@ using Zenject;
 
 namespace nCloudyKingdom.Scripts.Game.GamePlay.Character
 {
-    public class PlayerConfig : MonoBehaviour
+    public class Player : MonoBehaviour
     {
         [Inject] private GamePlayUI _gamePlayUI;
         

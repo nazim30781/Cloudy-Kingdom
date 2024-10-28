@@ -10,13 +10,13 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Character
         
         private Health _health;
         private CharacterController _controller;
-        private PlayerConfig _playerConfig;
+        private Player _player;
         
-        public void Initialize(PlayerConfig playerConf, Health health, CharacterController controller)
+        public void Initialize(Player playerConf, Health health, CharacterController controller)
         {
             _controller = controller;
             _health = health;
-            _playerConfig = playerConf;
+            _player = playerConf;
             
             SpawnEffect();
             
@@ -25,13 +25,13 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Character
         
         public void TakeDamage(int damage)
         {
-            if (_playerConfig.CanTakeDamage)
+            if (_player.CanTakeDamage)
                 _health.TakeDamage(damage);
         }
 
         private void OnDied()
         {
-            _playerConfig.ChangeToLoseState();
+            _player.ChangeToLoseState();
             SpawnEffect(_loseEffect);
         }
 
@@ -48,7 +48,7 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Character
         public void GoIdle()
         {
             _controller.enabled = true;
-            _playerConfig.ChangeToIdleState();
+            _player.ChangeToIdleState();
         }
     }
 }

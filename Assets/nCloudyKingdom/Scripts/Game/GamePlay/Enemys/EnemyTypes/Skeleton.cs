@@ -1,19 +1,16 @@
 ﻿using System.Collections.Generic;
-using nCloudyKingdom.Scripts.Game.GamePlay.Character;
 using nCloudyKingdom.Scripts.Game.GamePlay.Enemys.EnemyStateMachine;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Serialization;
 
 namespace nCloudyKingdom.Scripts.Game.GamePlay.Enemys
 {
-    public class Skeleton : EnemyPatrollerConfig, IPatroller
+    public class Skeleton : EnemyPatrollerBase, IPatroller
     {
         [SerializeField] private EnemyPatrollerHandler enemyPatrollerHandler;
         [SerializeField] private EnemyAttackHandler _attackHandler;
         [SerializeField] private EnemyHitBox _hitBox;
-        [SerializeField] private HealthBar _healthBar;
-        [SerializeField] private Health _health;
+        
 
         private NavMeshAgent _agent;
         
@@ -27,18 +24,19 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Enemys
             base.Init(targets);
             
             _agent = GetComponent<NavMeshAgent>();
-            
-            _health.Initialize();
-            _healthBar.Initialize(_health);
+            _agent.speed = Config.Speed;
 
             _patrollState = new PatrollState(this, _animator, enemyPatrollerHandler);
             _patrollMoveState = new PatrollMoveState(this, _animator, enemyPatrollerHandler);
             _followState = new FollowState(this, _animator, _agent, enemyPatrollerHandler);
             _attackState = new AttackState(this, _animator, _attackHandler);
                 
+            
+            _health.Initialize(Config.Health);
+            _healthBar.Initialize(_health);
             enemyPatrollerHandler.Initialize(_targets, _agent, this);
             _hitBox.Initialize(this, _health);
-            _attackHandler.Initialize();
+            _attackHandler.Initialize(Config);
         }
 
         public void MoveNextTarget() => _stateMachine.ChangeState(_patrollMoveState);
@@ -46,7 +44,7 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Enemys
         public void StartFollow() => _stateMachine.ChangeState(_followState);
         public void ChangeToAttackState() => _stateMachine.ChangeState(_attackState);
         public override void BaseBehaviour() => _stateMachine.ChangeState(_patrollState);
-        public override void AfterAttackAction() => MoveNextTarget();
+        public override void AfterAttackAction() => enemyPatrollerHandler.StartMove();
 
         public override void OnTakeDamage()
         {
@@ -56,7 +54,11 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Enemys
             }
         }
 
-        public override void OnLose() => Destroy(_agent);
+        public override void OnLose()
+        {
+            base.OnLose();
+            Destroy(_agent);
+        }
 
         public override void Lose() => Destroy(gameObject);
     }

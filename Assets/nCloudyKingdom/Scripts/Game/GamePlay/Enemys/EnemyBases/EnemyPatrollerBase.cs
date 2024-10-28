@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace nCloudyKingdom.Scripts.Game.GamePlay.Enemys
 {
-    public class EnemyPatrollerConfig : EnemyConfig
+    public class EnemyPatrollerBase : EnemyBase
     {
         protected List<Transform> _targets;
         

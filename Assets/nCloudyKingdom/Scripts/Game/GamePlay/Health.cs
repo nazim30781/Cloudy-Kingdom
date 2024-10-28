@@ -10,13 +10,18 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay
         private int _currentHealth;
 
         public event Action<float> HealthChanged;
-        public event Action Died; 
+        public event Action Died;
 
-        public void Initialize() => _currentHealth = _maxHealth;
+        public void Initialize(int health=0)
+        {
+            if (health > 0)
+                _maxHealth = health;
+            
+            _currentHealth = _maxHealth;
+        }
 
         public void TakeDamage(int value)
         {
-            Debug.Log("aq");
             if (value > 0)
             {
                 _currentHealth -= value;

@@ -42,7 +42,7 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Enemys.EnemyStateMachine
 
         private bool Check()
         {
-            Collider[] colliders = Physics.OverlapSphere(_enemy.transform.position, 5.5f);
+            Collider[] colliders = Physics.OverlapSphere(_enemy.transform.position, _enemy.Config.PatrolDistance);
 
             foreach (var collider in colliders)
             {

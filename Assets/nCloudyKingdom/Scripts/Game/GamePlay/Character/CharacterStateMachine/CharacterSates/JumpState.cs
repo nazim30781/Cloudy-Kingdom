@@ -9,7 +9,7 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Character.CharacterStateMachine.C
         private PlayerController _controller;
         private bool _canChange = true;
 
-        public JumpState(PlayerConfig playerConf, Animator animator, PlayerController controller) : base(playerConf,
+        public JumpState(Player playerConf, Animator animator, PlayerController controller) : base(playerConf,
             animator)
         {
             _controller = controller;

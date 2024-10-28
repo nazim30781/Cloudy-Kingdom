@@ -6,12 +6,12 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Root.Installers
 {
     public class GameplayPlayerInstaller : MonoInstaller
     {
-        [SerializeField] private PlayerConfig playerConf;
+        [SerializeField] private Player playerConf;
         public override void InstallBindings()
         {
-            var playerInstance = Container.InstantiatePrefabForComponent<PlayerConfig>(playerConf);
+            var playerInstance = Container.InstantiatePrefabForComponent<Player>(playerConf);
             playerInstance.Initialize();
-            Container.Bind<PlayerConfig>().FromInstance(playerInstance).AsSingle();
+            Container.Bind<Player>().FromInstance(playerInstance).AsSingle();
         }
     }
 }

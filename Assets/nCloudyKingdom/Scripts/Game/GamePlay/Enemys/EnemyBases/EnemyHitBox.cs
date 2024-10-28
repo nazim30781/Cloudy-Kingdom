@@ -1,28 +1,29 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace nCloudyKingdom.Scripts.Game.GamePlay.Enemys
 {
     public class EnemyHitBox : MonoBehaviour, IAttackable
     {
-        [SerializeField] private EnemyConfig _enemyConfig;
+        [FormerlySerializedAs("_enemyConfig")] [SerializeField] private EnemyBase enemyBase;
         [SerializeField] private GameObject _loseEffect;
 
         private Health _health;
-        public void Initialize(EnemyConfig enemyConfig, Health health)
+        public void Initialize(EnemyBase enemyBase, Health health)
         {
-            _enemyConfig = enemyConfig;
+            this.enemyBase = enemyBase;
             _health = health;
             _health.Died += OnDied;
         }
-        public void TakeDamage()
+        public void TakeDamage(int value)
         {
-            _health.TakeDamage(10);
-            _enemyConfig.OnTakeDamage();
+            _health.TakeDamage(value);
+            enemyBase.OnTakeDamage();
         }
 
         private void OnDied()
         {
-            _enemyConfig.ChangeLoseState();
+            enemyBase.ChangeLoseState();
             SpawnEffect();
         }
 

@@ -664,7 +664,7 @@ NavMeshAgent:
   m_Acceleration: 9.53
   avoidancePriority: 59
   m_AngularSpeed: 120
-  m_StoppingDistance: 1
+  m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -684,12 +684,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1347db5533c43c8a9d89b0ce4942010, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Config: {fileID: 11400000, guid: ee7a72634d308544287b61d1b4dff8bc, type: 2}
   RayPoint: {fileID: 7302319755463586741}
+  _healthBar: {fileID: 5126649766103467344}
+  _health: {fileID: 6866920379234329805}
   enemyPatrollerHandler: {fileID: 3857115847690784114}
   _attackHandler: {fileID: 2666792605071342293}
   _hitBox: {fileID: 5140591611996925533}
-  _healthBar: {fileID: 5126649766103467344}
-  _health: {fileID: 6866920379234329805}
 --- !u!114 &5140591611996925533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -702,7 +703,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63860a0a9a3d4442bac31a34c3d0b8f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyConfig: {fileID: 2877241060874255723}
+  enemyBase: {fileID: 2877241060874255723}
   _loseEffect: {fileID: 4481100413316401039, guid: 608aeb1c7b02f9146989223d818a03aa, type: 3}
 --- !u!114 &3857115847690784114
 MonoBehaviour:
@@ -728,7 +729,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e90dc0b630814f8facb2ae52ba3a0a68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackTime: 1
 --- !u!65 &2343686093184412619
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -748,8 +748,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1.5692685, z: 0.5504818}
-  m_Center: {x: 0, y: 0.72302234, z: 0.2247591}
+  m_Size: {x: 0.6602602, y: 3.0459082, z: 0.6398907}
+  m_Center: {x: -0.0086398125, y: 1.461342, z: -0.018107414}
 --- !u!114 &6866920379234329805
 MonoBehaviour:
   m_ObjectHideFlags: 0
