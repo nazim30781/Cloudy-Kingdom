@@ -8,6 +8,6 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Enemys
 
         public EnemyCounter() => Enemies = new List<Enemy>();
 
-        public void RemoveFromList(Enemy enemy) => Enemies.Remove(enemy);
+        public void RemoveFromList(Enemy enemy, int price) => Enemies.Remove(enemy);
     }
 }

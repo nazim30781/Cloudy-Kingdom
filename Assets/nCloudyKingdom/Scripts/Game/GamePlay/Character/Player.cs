@@ -1,4 +1,5 @@
 ﻿using nCloudyKingdom.Scripts.Game.GamePlay.Character.CharacterStateMachine.CharacterSates;
+using nCloudyKingdom.Scripts.Game.GamePlay.Character.Stats;
 using nCloudyKingdom.Scripts.Game.GamePlay.Root;
 using UnityEngine;
 using Zenject;
@@ -8,7 +9,7 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Character
     public class Player : MonoBehaviour
     {
         [Inject] private GamePlayUI _gamePlayUI;
-        
+
         [SerializeField] private PlayerBody _playerBody;
         [SerializeField] private PlayerController _playerController;
         [SerializeField] private PlayerControllerMediator _controllerMediator;

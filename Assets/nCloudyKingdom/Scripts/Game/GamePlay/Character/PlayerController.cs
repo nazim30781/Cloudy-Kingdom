@@ -7,12 +7,11 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Character
 {
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField] private float _speed;
-        [SerializeField] private float _jumpForce;
-        
+        private float _speed;
+        private float _jumpForce;
+        private float _attackTime = 1;
         private float _gravity;
         private float _horizontalAngle;
-        private float _attackTime = 1;
         private float _currentAttackTime;
         private Joystick _joystick;
         private Vector3 _moveDirection;
@@ -30,7 +29,11 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Character
             _joystick = gamePlayUI.Joystick;
             _player = player;
             _gravity = 9.81f;
-            _currentAttackTime = _attackTime;
+
+            _speed = PlayerStats.Speed;
+            _attackTime = PlayerStats.AttackTime;
+            _jumpForce = PlayerStats.JumpForce;
+            _currentAttackTime = PlayerStats.AttackTime;
         }
 
         private void Update()
@@ -40,7 +43,7 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Character
 
             if (horizontalInput != 0 || verticalInput != 0 && CanMove)
             {
-                if (!_player.IsMovementState() && _player.CanChangeState)
+                if (!_player.IsMovementState())
                     _player.ChangeToMovementState();
                 
                 _moveDirection = transform.forward;

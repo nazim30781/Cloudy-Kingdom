@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e9aa74367b5499f95bf84faab2978ee, type: 3}
+  m_Name: Waters
+  m_EditorClassIdentifier: 
+  Levels:
+    Types:
+    - ObjectTypes:
+      - {fileID: -3381434446735947706, guid: 31f798d331b2fe74aaee1649612a945f, type: 3}
+    - ObjectTypes:
+      - {fileID: 8515268588606497379, guid: e2a598321feae8849b15ea8f560c801b, type: 3}
+      - {fileID: -5971022145622365102, guid: abe26545c14209942903e8f64bb87f19, type: 3}
+      - {fileID: -3381434446735947706, guid: 31f798d331b2fe74aaee1649612a945f, type: 3}
+    - ObjectTypes:
+      - {fileID: 8515268588606497379, guid: e2a598321feae8849b15ea8f560c801b, type: 3}
+      - {fileID: -5971022145622365102, guid: abe26545c14209942903e8f64bb87f19, type: 3}
+    - ObjectTypes:
+      - {fileID: 8515268588606497379, guid: e2a598321feae8849b15ea8f560c801b, type: 3}

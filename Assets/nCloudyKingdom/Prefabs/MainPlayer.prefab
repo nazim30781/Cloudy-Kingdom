@@ -2365,9 +2365,6 @@ MonoBehaviour:
   _loseEffect: {fileID: 2417159380130621304, guid: 7cf7b840ed7da724fbee6c202061ec19, type: 3}
   _spawnEffect: {fileID: 6573993126468865133, guid: 8ba6d196f6bb49d43ace66bf7c292678, type: 3}
   _effectsSpawnPoint: {fileID: 8055518503756040867}
-  _GroundMask:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!114 &5776639911026342951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2386,6 +2383,7 @@ MonoBehaviour:
   _health: {fileID: 2736082510737276507}
   _healthBar: {fileID: 8281347045808097432}
   AttackPoint: {fileID: 4197684822227296089}
+  Config: {fileID: 11400000, guid: 133ea1ccc423b3641a2582ac2718356c, type: 2}
   CanChangeState: 0
   CanTakeDamage: 0
 --- !u!114 &-7526414081157545585
@@ -2412,8 +2410,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4844dc1d5acb41d79535c049582aea10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
-  _jumpForce: 10
   CanMove: 0
 --- !u!114 &2736082510737276507
 MonoBehaviour:

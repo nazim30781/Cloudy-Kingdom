@@ -49,9 +49,7 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Enemys
         public override void OnTakeDamage()
         {
             if (_stateMachine.CurrentState != _attackState && _stateMachine.CurrentState != _loseState)
-            {
                 _stateMachine.ChangeState(_attackState);
-            }
         }
 
         public override void OnLose()

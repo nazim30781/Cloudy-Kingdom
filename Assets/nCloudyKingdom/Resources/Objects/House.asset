@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e9aa74367b5499f95bf84faab2978ee, type: 3}
+  m_Name: House
+  m_EditorClassIdentifier: 
+  Levels:
+    Types:
+    - ObjectTypes:
+      - {fileID: -7706454214139209512, guid: ce2f1b2221ce5fb4ab234e7f1823f057, type: 3}
+      - {fileID: -8348604904404062912, guid: bca1a36dbda2e924ab8e10cc11b10586, type: 3}
+      - {fileID: -231771334548067117, guid: aeadf798da78d304cb3ac8775589eba4, type: 3}
+    - ObjectTypes:
+      - {fileID: 4753397016139609436, guid: 1c20beaf1abfad5419158523c9a4cda1, type: 3}
+      - {fileID: 646923449103089464, guid: 46da193e928dbde42b12aa36a52539ed, type: 3}
+    - ObjectTypes:
+      - {fileID: 5186443607230033687, guid: 65d9a70813b93164693be35c893ea3f6, type: 3}
+      - {fileID: -4499607015028817106, guid: 84a6fcf5461446740bfe929c6132f1c3, type: 3}
+    - ObjectTypes:
+      - {fileID: 6596659183544169134, guid: e18373eca5d5eab49b84a88184873696, type: 3}

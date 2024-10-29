@@ -11,5 +11,6 @@ namespace nCloudyKingdom.Scripts.Game.GamePlay.Enemys
         [field: SerializeField] public float PatrolDistance { get; private set; }
         [field: SerializeField] public float AttackDistance { get; private set; }
         [field: SerializeField] public int DamageCount { get; private set; }
+        [field: SerializeField] public int Price { get; private set; }
     }
 }
